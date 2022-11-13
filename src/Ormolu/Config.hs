@@ -363,7 +363,7 @@ printerOptsMeta =
               printf
                 "Styling of let blocks (choices: %s)"
                 (showAllValues letStyleMap),
-            metaDefault = LetAuto
+            metaDefault = LetInline
           },
       poInStyle =
         PrinterOptsFieldMeta

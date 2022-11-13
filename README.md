@@ -54,7 +54,7 @@ Defaults are in bold.
 | `newlines-between-decls` | any integer (**`1`**)                                 | Number of newlines between top-level declarations
 | `haddock-style`          | `single-line`, **`multi-line`**, `multi-line-compact` | Use `-- \|`, `{- \|`, or `{-\|` for multiline haddocks (single-line haddocks always use `--`)
 | `haddock-style-module`   | same as `haddock-style`                               | `haddock-style`, but specifically for the module docstring (not specifying anything = use the same setting as `haddock-style`) |
-| `let-style`              | `inline`, `newline`, **`auto`**, `mixed`              | How to style `let` blocks (`auto` uses `newline` if there's a newline in the input and `inline` otherwise, and `mixed` uses `inline` only when the `let` has exactly one binding)
+| `let-style`              | **`inline`**, `newline`, `auto`, `mixed`              | How to style `let` blocks (`auto` uses `newline` if there's a newline in the input and `inline` otherwise, and `mixed` uses `inline` only when the `let` has exactly one binding)
 | `in-style`               | `left-align`, **`right-align`**                       | How to align the `in` keyword with respect to `let`
 | `unicode`                | `always`, `detect`, **`never`**                       | Output Unicode syntax. With `detect` we output Unicode syntax exactly when the extension is seen to be enabled.
 | `respectful`             | **`true`**, `false`                                   | Be less aggressive in reformatting input, e.g. keep empty lines in import list
