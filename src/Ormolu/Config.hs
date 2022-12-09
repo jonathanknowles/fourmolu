@@ -12,6 +12,7 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE StandaloneDeriving #-}
 {-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE TypeApplications #-}
 {-# OPTIONS_GHC -Wno-orphans #-}
 
 -- | Configuration options used by the tool.
@@ -480,6 +481,27 @@ unicodePreferenceMap =
         ('UnicodeNever, "never")
       ]
    )
+
+instance PrinterOptsFieldType ColumnLimit where
+  parseJSON = \case
+    n@Aeson.Number {} ->
+      ColumnLimit <$> parseJSON @Natural n
+    Aeson.String "none" ->
+      pure ColumnLimitNone
+    Aeson.Null ->
+      pure ColumnLimitNone
+    _ ->
+      fail "ColumnLimit: expected either a natural number or \"none\"."
+  parseText = \case
+    "none" ->
+      Right ColumnLimitNone
+    n ->
+      ColumnLimit <$> parseText @Natural n
+  showText = \case
+    ColumnLimit n ->
+      showText n
+    ColumnLimitNone ->
+      "none"
 
 instance PrinterOptsFieldType CommaStyle where
   parseJSON = parseJSONWith commaStyleMap "CommaStyle"
