@@ -68,6 +68,7 @@ import qualified Data.Text as Text
 import qualified Data.Yaml as Yaml
 import GHC.Generics (Generic)
 import qualified GHC.Types.SrcLoc as GHC
+import Numeric.Natural (Natural)
 import Ormolu.Config.TH
 import Ormolu.Config.Types
 import Ormolu.Fixity (FixityMap)
@@ -405,6 +406,8 @@ class PrinterOptsFieldType a where
   showText = show
 
 instance PrinterOptsFieldType Int
+
+instance PrinterOptsFieldType Natural
 
 instance PrinterOptsFieldType Bool where
   parseText = \case
