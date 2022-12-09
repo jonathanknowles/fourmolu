@@ -3,6 +3,7 @@
 -- | This module defines PrinterOpts and related types
 module Ormolu.Config.Types
   ( PrinterOpts (..),
+    ColumnLimit (..),
     CommaStyle (..),
     FunctionArrowsStyle (..),
     HaddockPrintStyle (..),
@@ -15,6 +16,7 @@ module Ormolu.Config.Types
 where
 
 import GHC.Generics (Generic)
+import Numeric.Natural (Natural)
 
 -- | Options controlling formatting output.
 data PrinterOpts f = PrinterOpts
@@ -46,6 +48,11 @@ data PrinterOpts f = PrinterOpts
     poRespectful :: f Bool
   }
   deriving (Generic)
+
+data ColumnLimit
+  = ColumnLimit Natural
+  | ColumnLimitNone
+  deriving (Eq, Generic, Ord, Show)
 
 data CommaStyle
   = Leading
