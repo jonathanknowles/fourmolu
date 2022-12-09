@@ -24,6 +24,8 @@ data PrinterOpts f = PrinterOpts
     poIndentation :: f Int,
     -- | How to style arrows in type signatures
     poFunctionArrows :: f FunctionArrowsStyle,
+    -- | Maximum line length for automatic line breaking
+    poColumnLimit :: f ColumnLimit,
     -- | Whether to place commas at start or end of lines
     poCommaStyle :: f CommaStyle,
     -- | Styling of import/export lists

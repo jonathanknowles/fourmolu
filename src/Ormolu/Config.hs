@@ -224,6 +224,7 @@ overFieldsM :: Applicative m => (forall a. f a -> m (g a)) -> PrinterOpts f -> m
 overFieldsM f $(unpackFieldsWithSuffix 'PrinterOpts "0") = do
   poIndentation <- f poIndentation0
   poFunctionArrows <- f poFunctionArrows0
+  poColumnLimit <- f poColumnLimit0
   poCommaStyle <- f poCommaStyle0
   poImportExportStyle <- f poImportExportStyle0
   poIndentWheres <- f poIndentWheres0
@@ -286,6 +287,14 @@ printerOptsMeta =
             metaPlaceholder = "STYLE",
             metaHelp = "Styling of arrows in type signatures",
             metaDefault = TrailingArrows
+          },
+      poColumnLimit =
+        PrinterOptsFieldMeta
+          { metaName = "column-limit",
+            metaGetField = poColumnLimit,
+            metaPlaceholder = "STYLE",
+            metaHelp = "Maximum line length for automatic line breaking",
+            metaDefault = ColumnLimitNone
           },
       poCommaStyle =
         PrinterOptsFieldMeta
