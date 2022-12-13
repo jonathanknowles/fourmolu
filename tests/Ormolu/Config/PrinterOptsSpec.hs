@@ -28,7 +28,7 @@ import Ormolu
     detectSourceType,
     ormolu,
   )
-import Ormolu.Config (HaddockPrintStyleModule (..))
+import Ormolu.Config (ColumnLimit (..), HaddockPrintStyleModule (..))
 import Ormolu.Exception (OrmoluException, printOrmoluException)
 import Ormolu.Terminal (ColorMode (..), runTerm)
 import Ormolu.Utils.IO (readFileUtf8, writeFileUtf8)
@@ -93,6 +93,14 @@ singleTests =
             opts {poFunctionArrows = pure functionArrows},
           showTestCase = show,
           testCaseSuffix = suffix1
+        },
+      TestGroup
+        { label = "column-limit",
+          testCases = ColumnLimitNone : (ColumnLimit <$> [40, 80, 120, 160]),
+          updateConfig = \columnLimit opts ->
+            opts {poColumnLimit = pure columnLimit},
+          showTestCase = show,
+          testCaseSuffix = filter (/= ' ') . suffix1
         },
       TestGroup
         { label = "comma-style",

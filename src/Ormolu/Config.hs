@@ -33,6 +33,7 @@ module Ormolu.Config
     PrinterOptsTotal,
     defaultPrinterOpts,
     fillMissingPrinterOpts,
+    ColumnLimit (..),
     CommaStyle (..),
     HaddockPrintStyle (..),
     HaddockPrintStyleModule (..),
