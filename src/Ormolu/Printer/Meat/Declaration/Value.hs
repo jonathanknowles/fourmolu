@@ -8,6 +8,8 @@
 {-# LANGUAGE TypeFamilies #-}
 {-# LANGUAGE TypeOperators #-}
 {-# LANGUAGE ViewPatterns #-}
+{- HLINT ignore "Use camelCase" -}
+{- HLINT ignore "Replace case with maybe" -}
 
 module Ormolu.Printer.Meat.Declaration.Value
   ( p_valDecl,
